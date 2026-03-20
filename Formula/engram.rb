@@ -5,21 +5,21 @@ class Engram < Formula
   if OS.mac?
     if Hardware::CPU.arm?
       url "https://github.com/cleverlook/engram/releases/download/v0.2.2/engram-aarch64-apple-darwin.tar.xz"
-      sha256 "ec2665280191eccfc9aac79e4188cd9612b8dbaaeb5d78da5bcf7a0d7fc4d936"
+      sha256 "cf1c3ce43f39672bf411541b1f467ab21ca3fc70fa3f2a4962b4df8ec8179d0b"
     end
     if Hardware::CPU.intel?
       url "https://github.com/cleverlook/engram/releases/download/v0.2.2/engram-x86_64-apple-darwin.tar.xz"
-      sha256 "dd663ad14dc4e90402255ceb847ecf68ddc8203e5aedc9d0d838e5be0e11fa12"
+      sha256 "419725c1c8be7811ae343905b3914cbcc371f4d0e7ebfe0f241db9cc7ac0df5a"
     end
   end
   if OS.linux?
     if Hardware::CPU.arm?
       url "https://github.com/cleverlook/engram/releases/download/v0.2.2/engram-aarch64-unknown-linux-gnu.tar.xz"
-      sha256 "62c49d5de4f7d228959d1e4e2df0a9579464542c11f4a69434678bd9f799319c"
+      sha256 "dbb2817189700fab4eafa0d22776edf376695faceb4f9b3751cdcb3e8b9d2958"
     end
     if Hardware::CPU.intel?
       url "https://github.com/cleverlook/engram/releases/download/v0.2.2/engram-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "1d37de0d54d287bcadb40e89441a4e24c66cef5a8b1047008dad9f9f6ecd26b8"
+      sha256 "7576e1347f829164f56346c7332928f963d7837d4e9dd6dc25868fa46149216e"
     end
   end
 
@@ -39,8 +39,6 @@ class Engram < Formula
   end
 
   def install_binary_aliases!
-
-    generate_completions_from_executable(bin/"engram", "completion")
     BINARY_ALIASES[target_triple.to_sym].each do |source, dests|
       dests.each do |dest|
         bin.install_symlink bin/source.to_s => dest
@@ -55,8 +53,6 @@ class Engram < Formula
     bin.install "engram" if OS.linux? && Hardware::CPU.intel?
 
     install_binary_aliases!
-
-    generate_completions_from_executable(bin/"engram", "completion")
 
     # Homebrew will automatically install these, so we don't need to do that
     doc_files = Dir["README.*", "readme.*", "LICENSE", "LICENSE.*", "CHANGELOG.*"]
