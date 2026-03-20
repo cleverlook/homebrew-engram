@@ -1,25 +1,25 @@
 class Engram < Formula
   desc "Persistent structured memory for AI agents"
   homepage "https://github.com/cleverlook/engram"
-  version "0.2.0"
+  version "0.2.2"
   if OS.mac?
     if Hardware::CPU.arm?
-      url "https://github.com/cleverlook/engram/releases/download/v0.2.0/engram-aarch64-apple-darwin.tar.xz"
-      sha256 "e76e21d0af60e73ba6888e1a968032e90e4ec0543cef03ddfcc075369dcb07d9"
+      url "https://github.com/cleverlook/engram/releases/download/v0.2.2/engram-aarch64-apple-darwin.tar.xz"
+      sha256 "ec2665280191eccfc9aac79e4188cd9612b8dbaaeb5d78da5bcf7a0d7fc4d936"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/cleverlook/engram/releases/download/v0.2.0/engram-x86_64-apple-darwin.tar.xz"
-      sha256 "9215fdc2905a6722b967ee0d1eac08e6adae2d39d94765a80e88d1396074445a"
+      url "https://github.com/cleverlook/engram/releases/download/v0.2.2/engram-x86_64-apple-darwin.tar.xz"
+      sha256 "dd663ad14dc4e90402255ceb847ecf68ddc8203e5aedc9d0d838e5be0e11fa12"
     end
   end
   if OS.linux?
     if Hardware::CPU.arm?
-      url "https://github.com/cleverlook/engram/releases/download/v0.2.0/engram-aarch64-unknown-linux-gnu.tar.xz"
-      sha256 "46981e03d59767ea2ec40aa8a6a48ce927420b509b3c62a70cafdd9078893161"
+      url "https://github.com/cleverlook/engram/releases/download/v0.2.2/engram-aarch64-unknown-linux-gnu.tar.xz"
+      sha256 "62c49d5de4f7d228959d1e4e2df0a9579464542c11f4a69434678bd9f799319c"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/cleverlook/engram/releases/download/v0.2.0/engram-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "61eae300405bcc53919c727ac500e624c779b2e4b4443aa024035bd4c74365dc"
+      url "https://github.com/cleverlook/engram/releases/download/v0.2.2/engram-x86_64-unknown-linux-gnu.tar.xz"
+      sha256 "1d37de0d54d287bcadb40e89441a4e24c66cef5a8b1047008dad9f9f6ecd26b8"
     end
   end
 
@@ -39,6 +39,8 @@ class Engram < Formula
   end
 
   def install_binary_aliases!
+
+    generate_completions_from_executable(bin/"engram", "completion")
     BINARY_ALIASES[target_triple.to_sym].each do |source, dests|
       dests.each do |dest|
         bin.install_symlink bin/source.to_s => dest
@@ -53,6 +55,8 @@ class Engram < Formula
     bin.install "engram" if OS.linux? && Hardware::CPU.intel?
 
     install_binary_aliases!
+
+    generate_completions_from_executable(bin/"engram", "completion")
 
     # Homebrew will automatically install these, so we don't need to do that
     doc_files = Dir["README.*", "readme.*", "LICENSE", "LICENSE.*", "CHANGELOG.*"]
