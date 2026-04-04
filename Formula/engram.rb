@@ -1,25 +1,25 @@
 class Engram < Formula
   desc "Persistent structured memory for AI agents"
   homepage "https://github.com/cleverlook/engram"
-  version "0.2.2"
+  version "0.3.0"
   if OS.mac?
     if Hardware::CPU.arm?
-      url "https://github.com/cleverlook/engram/releases/download/v0.2.2/engram-aarch64-apple-darwin.tar.xz"
-      sha256 "cf1c3ce43f39672bf411541b1f467ab21ca3fc70fa3f2a4962b4df8ec8179d0b"
+      url "https://github.com/cleverlook/engram/releases/download/v0.3.0/engram-aarch64-apple-darwin.tar.xz"
+      sha256 "776182237fcf4eb3f66474e30513926d5b2870fc1ac2bc5deada08c84fc11983"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/cleverlook/engram/releases/download/v0.2.2/engram-x86_64-apple-darwin.tar.xz"
-      sha256 "419725c1c8be7811ae343905b3914cbcc371f4d0e7ebfe0f241db9cc7ac0df5a"
+      url "https://github.com/cleverlook/engram/releases/download/v0.3.0/engram-x86_64-apple-darwin.tar.xz"
+      sha256 "3e98ccef1e8cefebc81324b0d355f9fe3b0307a6e4e5d8bca92c65768499082f"
     end
   end
   if OS.linux?
     if Hardware::CPU.arm?
-      url "https://github.com/cleverlook/engram/releases/download/v0.2.2/engram-aarch64-unknown-linux-gnu.tar.xz"
-      sha256 "dbb2817189700fab4eafa0d22776edf376695faceb4f9b3751cdcb3e8b9d2958"
+      url "https://github.com/cleverlook/engram/releases/download/v0.3.0/engram-aarch64-unknown-linux-gnu.tar.xz"
+      sha256 "a155f8cacf092818afe1d0570d617387b7e3c51ff3501814a467752b1f31585a"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/cleverlook/engram/releases/download/v0.2.2/engram-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "7576e1347f829164f56346c7332928f963d7837d4e9dd6dc25868fa46149216e"
+      url "https://github.com/cleverlook/engram/releases/download/v0.3.0/engram-x86_64-unknown-linux-gnu.tar.xz"
+      sha256 "a13124d18e705868b885d092d15c0a2bc677360bda6cbcdfb9a252e54595249b"
     end
   end
 
